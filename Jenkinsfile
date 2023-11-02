@@ -14,15 +14,9 @@ pipeline {
         }
         stage('Pull Docker Image') {
             steps {
-                script {
-                    def dockerImage = 'bootproject:lts' 
-                    def registryCredentials = '4e41affb-db9b-4dae-b6c7-8182465b8d89' 
-
-                    
-                    docker.withRegistry('https://hub.docker.com', registryCredentials) {
-                        docker.image(dockerImage).pull()
-                    }
-                }
+                
+                sh 'bootproject:lts' // Replace with your Docker image and tag
+            
             }
         }
     }
