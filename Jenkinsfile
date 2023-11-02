@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'bootproject:lts' // Specify the Docker image and tag you want to pull
+            image 'bootproject:lts'
         }
     }
     stages {
