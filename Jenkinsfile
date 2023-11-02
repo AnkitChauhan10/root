@@ -15,7 +15,9 @@ pipeline {
         stage('Pull Docker Image') {
             steps {
                 
-                sh 'bootproject:lts' // Replace with your Docker image and tag
+               
+                sh 'docker pull springaaa:lts' // Replace with your Docker image and tag
+            
             
             }
         }
