@@ -1,14 +1,17 @@
 pipeline {
-    agent {
-        docker {
-            image 'bootproject:lts'
-        }
-    }
+    agent any
     stages {
-        stage('Build and Deploy') {
+        stage('Pull Docker Image') {
             steps {
-                // Add your build and deployment steps here
+                script {
+                    def dockerImage = docker.image('bootproject:lts')
+                    withCredentials([usernamePassword(credentialsId: '4e41affb-db9b-4dae-b6c7-8182465b8d89', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                        dockerImage.withRegistry('https://index.docker.io/v1/', DOCKERHUB_USERNAME, DOCKERHUB_PASSWORD)
+                        dockerImage.pull()
+                    }
+                }
             }
         }
+        // Other stages in your pipeline...
     }
 }
