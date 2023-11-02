@@ -19,7 +19,7 @@ pipeline {
                     def registryCredentials = '4e41affb-db9b-4dae-b6c7-8182465b8d89' 
 
                     
-                    docker.withRegistry('https://registry-1.docker.io', registryCredentials) {
+                    docker.withRegistry('https://hub.docker.com/repository/docker/ankitchauhan18/springaaa', registryCredentials) {
                         docker.image(dockerImage).pull()
                     }
                 }
