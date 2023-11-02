@@ -4,14 +4,15 @@ pipeline {
         stage('Pull Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.image('bootproject:lts')
-                    withCredentials([usernamePassword(credentialsId: '4e41affb-db9b-4dae-b6c7-8182465b8d89', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                        dockerImage.withRegistry('https://index.docker.io/v1/', DOCKERHUB_USERNAME, DOCKERHUB_PASSWORD)
-                        dockerImage.pull()
+                    def dockerImage = 'bootproject:lts' // Specify the Docker image and tag
+                    def registryCredentials = '4e41affb-db9b-4dae-b6c7-8182465b8d89' // Specify your Docker Hub credentials ID
+
+                    // Pull the Docker image
+                    docker.withRegistry('https://registry-1.docker.io', registryCredentials) {
+                        docker.image(dockerImage).pull()
                     }
                 }
             }
         }
-        // Other stages in your pipeline...
     }
 }
