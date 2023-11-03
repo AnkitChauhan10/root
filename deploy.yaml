@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: spring
-        image: ankitchauhan10/spring/spring:lts 
+        image: ankitchauhan18/springaaa:latest
         ports:
         - containerPort: 8080
