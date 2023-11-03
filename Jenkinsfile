@@ -16,7 +16,7 @@ pipeline {
             steps {
                 
                
-                sh 'docker pull ankitchauhan18/springaaa:latest' // Replace with your Docker image and tag
+                sh 'docker pull ankitchauhan18/springaaa:latest' 
             
             
             }
@@ -24,7 +24,7 @@ pipeline {
          stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    // Use kubectl to apply the deployment manifest
+                    
                     sh 'kubectl apply -f deploy.yaml'
                 }
             }
