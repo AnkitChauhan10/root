@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     
-                    echo "done deployments"
+                    sh 'kubectl applly -f deploy.yaml'
                 }
             }
         }
